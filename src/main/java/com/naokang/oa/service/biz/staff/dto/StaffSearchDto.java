@@ -2,6 +2,8 @@ package com.naokang.oa.service.biz.staff.dto;
 
 import lombok.Data;
 
+import java.util.Date;
+
 /**
  * @author wangsai
  * @data 2020/1/15
@@ -9,7 +11,42 @@ import lombok.Data;
 @Data
 public class StaffSearchDto {
     /**
-     * 名称
+     * 姓名
      */
-    String name;
+    private String name;
+
+    /**
+     * 性别
+     */
+    private Integer sex;
+
+    /**
+     * 部门
+     */
+    private Integer department;
+
+    /**
+     * 生日 月份
+     */
+    private Integer birthDay;
+
+    /**
+     * 入职日期   从
+     */
+    private Date entryDateStart;
+
+    /**
+     * 入职日期  至
+     */
+    private Date entryDateEnd;
+
+    /**
+     * 是否缴纳社保 social security（ss）
+     */
+    private Integer ssFlag;
+
+    /**
+     * 职称
+     */
+    private Integer title;
 }
