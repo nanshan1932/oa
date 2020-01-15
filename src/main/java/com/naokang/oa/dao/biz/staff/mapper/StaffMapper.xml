@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.naokang.oa.dao.biz.staff.mapper.StaffMapper">
+
+    <sql id="fields"><!-- ALl Fields -->
+        id, name, sex, id_number, education, ethnicity, marital_status, department, post, title, graduate_institution, major, birth_day,
+        registered_permanent_residence, address, entry_date, resignation_date, tel_number, contact_person, contract_period, social_security_num,
+        social_security_pay_month, social_security_stop_month, remark, opt_id, add_time, update_time, mark
+    </sql>
+
+    <sql id="sets"><!-- Set Fields -->
+        <trim suffixOverrides=",">
+            <if test="id != null">id = #{id},</if>
+            <if test="name != null">name = #{name},</if>
+            <if test="sex != null">sex = #{sex},</if>
+            <if test="idNumber != null">id_number = #{idNumber},</if>
+            <if test="education != null">education = #{education},</if>
+            <if test="maritalStatus != null">marital_status = #{maritalStatus},</if>
+            <if test="department != null">department = #{department},</if>
+            <if test="post != null">post = #{post},</if>
+            <if test="title != null">title = #{title},</if>
+            <if test="graduateInstitution != null">graduate_institution = #{graduateInstitution},</if>
+            <if test="major != null">major = #{major},</if>
+            <if test="birthDay != null">birth_day = #{birthDay},</if>
+            <if test="registeredPermanentResidence != null">registered_permanent_residence = #{registeredPermanentResidence},</if>
+            <if test="address != null">address = #{address},</if>
+            <if test="entryDate != null">entry_date = #{entryDate},</if>
+            <if test="resignationDate != null">resignation_date = #{resignationDate},</if>
+            <if test="telNumber != null">tel_number = #{telNumber},</if>
+            <if test="contactPerson != null">contact_person = #{contactPerson},</if>
+            <if test="contractPeriod != null">contract_period = #{contractPeriod},</if>
+            <if test="socialSecurityNum != null">social_security_num = #{socialSecurityNum},</if>
+            <if test="socialSecurityPayMonth != null">social_security_pay_month = #{socialSecurityPayMonth},</if>
+            <if test="socialSecurityStopMonth != null">social_security_stop_month = #{socialSecurityStopMonth},</if>
+            <if test="remark != null">remark = #{remark},</if>
+            <if test="optId != null">opt_id = #{optId},</if>
+            <if test="addTime != null">add_time = #{addTime},</if>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
+            <if test="mark != null">mark = #{mark},</if>
+        </trim>
+    </sql>
+
+    <sql id="conditions"><!-- Search Condition -->
+        <trim prefix="where" prefixOverrides="and |or">
+            <if test="id != null">and id = #{id}</if>
+            <if test="name != null">and name = #{name}</if>
+            <if test="sex != null">and sex = #{sex}</if>
+            <if test="idNumber != null">and id_number = #{idNumber}</if>
+            <if test="education != null">and education = #{education}</if>
+            <if test="maritalStatus != null">and marital_status = #{maritalStatus}</if>
+            <if test="department != null">and department = #{department}</if>
+            <if test="post != null">and post = #{post}</if>
+            <if test="title != null">and title = #{title}</if>
+            <if test="graduateInstitution != null">and graduate_institution = #{graduateInstitution}</if>
+            <if test="major != null">and major = #{major}</if>
+            <if test="birthDay != null">and birth_day = #{birthDay}</if>
+            <if test="registeredPermanentResidence != null">and registered_permanent_residence = #{registeredPermanentResidence}</if>
+            <if test="address != null">and address = #{address}</if>
+            <if test="entryDate != null">and entry_date = #{entryDate}</if>
+            <if test="resignationDate != null">and resignation_date = #{resignationDate}</if>
+            <if test="telNumber != null">and tel_number = #{telNumber}</if>
+            <if test="contactPerson != null">and contact_person = #{contactPerson}</if>
+            <if test="contractPeriod != null">and contract_period = #{contractPeriod}</if>
+            <if test="socialSecurityNum != null">and social_security_num = #{socialSecurityNum}</if>
+            <if test="socialSecurityPayMonth != null">and social_security_pay_month = #{socialSecurityPayMonth}</if>
+            <if test="socialSecurityStopMonth != null">and social_security_stop_month = #{socialSecurityStopMonth}</if>
+            <if test="remark != null">and remark = #{remark}</if>
+            <if test="optId != null">and opt_id = #{optId}</if>
+            <if test="addTime != null">and add_time = #{addTime}</if>
+            <if test="updateTime != null">and update_time = #{updateTime}</if>
+            <if test="mark != null">and mark = #{mark}</if>
+        </trim>
+    </sql>
+    <sql id="insertFields"><!-- Fields to insert -->
+        <trim suffixOverrides=",">
+            <if test="id != null">id,</if>
+            <if test="name != null">name,</if>
+            <if test="sex != null">sex,</if>
+            <if test="idNumber != null">id_number,</if>
+            <if test="education != null">education,</if>
+            <if test="maritalStatus != null">marital_status,</if>
+            <if test="department != null">department,</if>
+            <if test="post != null">post,</if>
+            <if test="title != null">title,</if>
+            <if test="graduateInstitution != null">graduate_institution,</if>
+            <if test="major != null">major,</if>
+            <if test="birthDay != null">birth_day,</if>
+            <if test="registeredPermanentResidence != null">registered_permanent_residence,</if>
+            <if test="address != null">address,</if>
+            <if test="entryDate != null">entry_date,</if>
+            <if test="resignationDate != null">resignation_date,</if>
+            <if test="telNumber != null">tel_number,</if>
+            <if test="contactPerson != null">contact_person,</if>
+            <if test="contractPeriod != null">contract_period,</if>
+            <if test="socialSecurityNum != null">social_security_num,</if>
+            <if test="socialSecurityPayMonth != null">social_security_pay_month,</if>
+            <if test="socialSecurityStopMonth != null">social_security_stop_month,</if>
+            <if test="remark != null">remark,</if>
+            <if test="optId != null">opt_id,</if>
+            <if test="addTime != null">add_time,</if>
+            <if test="updateTime != null">update_time,</if>
+            <if test="mark != null">mark,</if>
+        </trim>
+    </sql>
+
+    <sql id="insertValues"><!-- Values to insert -->
+        <trim suffixOverrides=",">
+            <if test="id != null">#{id},</if>
+            <if test="name != null">#{name},</if>
+            <if test="sex != null">#{sex},</if>
+            <if test="idNumber != null">#{idNumber},</if>
+            <if test="education != null">#{education},</if>
+            <if test="maritalStatus != null">#{maritalStatus},</if>
+            <if test="department != null">#{department},</if>
+            <if test="post != null">#{post},</if>
+            <if test="title != null">#{title},</if>
+            <if test="graduateInstitution != null">#{graduateInstitution},</if>
+            <if test="major != null">#{major},</if>
+            <if test="birthDay != null">#{birthDay},</if>
+            <if test="registeredPermanentResidence != null">#{registeredPermanentResidence},</if>
+            <if test="address != null">#{address},</if>
+            <if test="entryDate != null">#{entryDate},</if>
+            <if test="resignationDate != null">#{resignationDate},</if>
+            <if test="telNumber != null">#{telNumber},</if>
+            <if test="contactPerson != null">#{contactPerson},</if>
+            <if test="contractPeriod != null">#{contractPeriod},</if>
+            <if test="socialSecurityNum != null">#{socialSecurityNum},</if>
+            <if test="socialSecurityPayMonth != null">#{socialSecurityPayMonth},</if>
+            <if test="socialSecurityStopMonth != null">#{socialSecurityStopMonth},</if>
+            <if test="remark != null">#{remark},</if>
+            <if test="optId != null">#{optId},</if>
+            <if test="addTime != null">#{addTime},</if>
+            <if test="updateTime != null">#{updateTime},</if>
+            <if test="mark != null">#{mark},</if>
+        </trim>
+    </sql>
+
+    <!-- 新增 -->
+    <insert id="insertInto" parameterType="Object">
+        insert into oa_staff(<include refid="insertFields"/>)
+        values(<include refid="insertValues"/>)
+    </insert>
+
+    <!-- 修改数据 -->
+    <update id="updateInto" parameterType="Object">
+        update oa_staff set
+        <include refid="sets"/>
+        where id = #{id}
+    </update>
+
+    <select id="selectEntity" parameterType="Object" resultType="com.naokang.oa.dao.biz.staff.entity.StaffEntity">
+        select
+        <include refid="fields"/>
+        from oa_staff
+        <include refid="conditions"/>
+    </select>
+
+    <!-- 获取List<T>对象 -->
+    <select id="selectEntities" parameterType="Object" resultType="com.naokang.oa.dao.biz.staff.entity.StaffEntity">
+        select
+        <include refid="fields"/>
+        from oa_staff
+        <include refid="conditions"/>
+    </select>
+
+    <!-- 获取记录Count数量 -->
+    <select id="selectPageCount" parameterType="Map" resultType="Integer">
+        select count(id) from oa_staff
+        <include refid="conditions"/>
+    </select>
+
+    <!-- 获取List<T>分页对象 -->
+    <select id="selectPageEntities" parameterType="Map" resultType="com.naokang.oa.dao.biz.staff.entity.StaffEntity">
+        select * from oa_staff
+        <include refid="conditions"/>
+        <if test="pageBegin != null and pageSize != null">
+            limit #{pageBegin},#{pageSize}
+        </if>
+    </select>
+</mapper>
