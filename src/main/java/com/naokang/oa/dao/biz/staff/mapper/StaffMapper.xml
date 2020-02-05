@@ -3,7 +3,7 @@
 <mapper namespace="com.naokang.oa.dao.biz.staff.mapper.StaffMapper">
 
     <sql id="fields"><!-- ALl Fields -->
-        id, name, sex, id_number, education, ethnicity, marital_status, department, post, title, graduate_institution, major, birth_day,
+        id, name, sex, id_number, education, ethnicity, marital_status, dept_id, post, title, graduate_institution, major, birth_day,
         registered_permanent_residence, address, entry_date, resignation_date, tel_number, contact_person, contract_period, ss_id,
         remark, opt_id, add_time, update_time, mark
     </sql>
@@ -16,7 +16,7 @@
             <if test="idNumber != null">id_number = #{idNumber},</if>
             <if test="education != null">education = #{education},</if>
             <if test="maritalStatus != null">marital_status = #{maritalStatus},</if>
-            <if test="department != null">department = #{department},</if>
+            <if test="deptId != null">dept_id = #{deptId},</if>
             <if test="post != null">post = #{post},</if>
             <if test="title != null">title = #{title},</if>
             <if test="graduateInstitution != null">graduate_institution = #{graduateInstitution},</if>
@@ -46,7 +46,7 @@
             <if test="idNumber != null">and id_number = #{idNumber}</if>
             <if test="education != null">and education = #{education}</if>
             <if test="maritalStatus != null">and marital_status = #{maritalStatus}</if>
-            <if test="department != null">and department = #{department}</if>
+            <if test="deptId != null">and dept_id = #{deptId}</if>
             <if test="post != null">and post = #{post}</if>
             <if test="title != null">and title = #{title}</if>
             <if test="graduateInstitution != null">and graduate_institution = #{graduateInstitution}</if>
@@ -75,7 +75,7 @@
             <if test="idNumber != null">id_number,</if>
             <if test="education != null">education,</if>
             <if test="maritalStatus != null">marital_status,</if>
-            <if test="department != null">department,</if>
+            <if test="deptId != null">dept_id,</if>
             <if test="post != null">post,</if>
             <if test="title != null">title,</if>
             <if test="graduateInstitution != null">graduate_institution,</if>
@@ -105,7 +105,7 @@
             <if test="idNumber != null">#{idNumber},</if>
             <if test="education != null">#{education},</if>
             <if test="maritalStatus != null">#{maritalStatus},</if>
-            <if test="department != null">#{department},</if>
+            <if test="deptId != null">#{deptId},</if>
             <if test="post != null">#{post},</if>
             <if test="title != null">#{title},</if>
             <if test="graduateInstitution != null">#{graduateInstitution},</if>

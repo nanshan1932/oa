@@ -1,11 +1,12 @@
 package com.naokang.oa.service.biz.staff.impl;
 
+import com.naokang.oa.common.utils.BeanUtilsExt;
 import com.naokang.oa.dao.biz.staff.entity.StaffEntity;
 import com.naokang.oa.dao.biz.staff.mapper.StaffMapper;
 import com.naokang.oa.service.biz.staff.IStaffService;
+import com.naokang.oa.service.biz.staff.dto.StaffSaveDto;
 import com.naokang.oa.service.biz.staff.dto.StaffSearchDto;
 import com.naokang.oa.service.biz.staff.dto.StaffViewDto;
-import org.springframework.cglib.beans.BeanCopier;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
@@ -24,6 +25,13 @@ public class StaffServiceImpl implements IStaffService {
 
     @Resource
     private StaffMapper staffMapper;
+
+    @Override
+    public void addStaff(StaffSaveDto dto) {
+        StaffEntity entity = new StaffEntity();
+        BeanUtilsExt.copy(dto, entity);
+        staffMapper.insertInto(entity);
+    }
 
     @Override
     public Map<String, Object> getStaffPage(StaffSearchDto dto) {
@@ -58,11 +66,9 @@ public class StaffServiceImpl implements IStaffService {
         }
 
         try {
-            StaffEntity source = entityList.get(0);
-            BeanCopier beanCopier = BeanCopier.create(source.getClass(), dtoClass, false);
             for (StaffEntity entity : entityList) {
                 StaffViewDto dto = dtoClass.newInstance();
-                beanCopier.copy(entity, dto, null);
+                BeanUtilsExt.copy(entity, dto);
                 convert2ViewDtoPostHandle(entity, dto);
                 dtoList.add(dto);
             }

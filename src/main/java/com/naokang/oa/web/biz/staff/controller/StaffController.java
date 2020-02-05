@@ -1,6 +1,7 @@
 package com.naokang.oa.web.biz.staff.controller;
 
 import com.naokang.oa.service.biz.staff.IStaffService;
+import com.naokang.oa.service.biz.staff.dto.StaffSaveDto;
 import com.naokang.oa.service.biz.staff.dto.StaffSearchDto;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -10,6 +11,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -28,6 +30,11 @@ public class StaffController {
     @Autowired
     private IStaffService staffService;
 
+    @ApiOperation("添加字典值")
+    @PostMapping(value = "/addStaff")
+    public void addStaff(@Validated StaffSaveDto dto, BindingResult result){
+        staffService.addStaff(dto);
+    }
 
     @ApiOperation("分页获取礼品卡差异统计")
     @GetMapping(value = "/getStaffPage")

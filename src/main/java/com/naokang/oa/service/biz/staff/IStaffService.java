@@ -1,5 +1,6 @@
 package com.naokang.oa.service.biz.staff;
 
+import com.naokang.oa.service.biz.staff.dto.StaffSaveDto;
 import com.naokang.oa.service.biz.staff.dto.StaffSearchDto;
 
 import java.util.Map;
@@ -16,4 +17,10 @@ public interface IStaffService {
      * @return
      */
     Map<String, Object> getStaffPage(StaffSearchDto dto);
+
+    /**
+     * 添加员工记录
+     * @param dto
+     */
+    void addStaff(StaffSaveDto dto);
 }

@@ -1,44 +1,31 @@
-package com.naokang.oa.dao.biz.staff.entity;
+package com.naokang.oa.service.biz.staff.dto;
 
 import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.experimental.Accessors;
 
-import java.io.Serializable;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 
-/**
- *  员工表
- *
- * @author 
- * @since 2020-01-15
- */
 @Data
-@EqualsAndHashCode(callSuper = false)
-public class StaffEntity implements Serializable {
-
-    private static final long serialVersionUID = 6880763198370524458L;
-
-    /**
-     * id
-     */
-    private Integer id;
-
+public class StaffSaveDto {
     /**
      * 姓名
      */
+    @NotBlank
     private String name;
 
 
     /**
      * 1男 2女
      */
+    @NotNull
     private Integer sex;
 
 
     /**
      * 身份证号码
      */
+    @NotBlank
     private String idNumber;
 
 
@@ -136,43 +123,4 @@ public class StaffEntity implements Serializable {
      * 合同期限
      */
     private String contractPeriod;
-
-
-    /**
-     * 社保id
-     */
-    private Integer ssId;
-
-    /**
-     * 备注
-     */
-    private String remark;
-
-    /**
-     * 添加时间
-     */
-    private Date addTime;
-
-    /**
-     * 更新时间
-     */
-    private Date updateTime;
-
-    /**
-     * 操作人Id
-     */
-    private Integer optId;
-
-    /**
-     * 标识(是否有效 0有效；-1无效)
-     */
-    private Integer mark;
-
-    /**
-     * 初始化添加时间与修改时间
-     */
-    public void initAddUpdateTime() {
-        setAddTime(new Date());
-        setUpdateTime(new Date());
-    }
 }
