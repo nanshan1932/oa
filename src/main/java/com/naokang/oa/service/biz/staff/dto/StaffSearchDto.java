@@ -23,7 +23,7 @@ public class StaffSearchDto {
     /**
      * 部门
      */
-    private Integer department;
+    private Integer deptId;
 
     /**
      * 生日 月份
@@ -49,4 +49,15 @@ public class StaffSearchDto {
      * 职称
      */
     private Integer title;
+
+    /**
+     * 每页大小
+     */
+    private Integer pageSize;
+
+    /**
+     * 页数
+     */
+    private Integer pageNo;
+
 }

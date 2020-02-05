@@ -1,25 +1,15 @@
-package com.naokang.oa.dao.biz.staff.entity;
+package com.naokang.oa.service.biz.staff.dto;
 
 import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.experimental.Accessors;
 
-import java.io.Serializable;
 import java.util.Date;
 
 /**
- *  员工表
- *
- * @author 
- * @since 2020-01-15
+ * @author wangsai
+ * @date 2020/1/18
  */
 @Data
-@EqualsAndHashCode(callSuper = false)
-@Accessors(chain = true)
-public class StaffEntity implements Serializable {
-
-    private static final long serialVersionUID = 1L;
-
+public class StaffViewDto {
     /**
      * id
      */
@@ -34,7 +24,7 @@ public class StaffEntity implements Serializable {
     /**
      * 1男 2女
      */
-    private Integer sex;
+    private String sexTxt;
 
 
     /**
@@ -46,7 +36,7 @@ public class StaffEntity implements Serializable {
     /**
      * 学历 1中专 2大专 3本科 4研究生...
      */
-    private Integer education;
+    private String educationTxt;
 
 
     /**
@@ -58,25 +48,25 @@ public class StaffEntity implements Serializable {
     /**
      * 婚姻状况 1未婚 2已婚 3离异 4丧偶
      */
-    private Integer maritalStatus;
+    private Integer maritalStatusTxt;
 
 
     /**
      * 部门
      */
-    private Integer deptId;
+    private String department;
 
 
     /**
      * 岗位
      */
-    private Integer post;
+    private String postTxt;
 
 
     /**
      * 职称
      */
-    private Integer title;
+    private String titleTxt;
 
 
     /**
@@ -144,36 +134,4 @@ public class StaffEntity implements Serializable {
      */
     private Integer ssId;
 
-    /**
-     * 备注
-     */
-    private String remark;
-
-    /**
-     * 添加时间
-     */
-    private Date addTime;
-
-    /**
-     * 更新时间
-     */
-    private Date updateTime;
-
-    /**
-     * 操作人Id
-     */
-    private Integer optId;
-
-    /**
-     * 标识(是否有效 0有效；-1无效)
-     */
-    private Integer mark;
-
-    /**
-     * 初始化添加时间与修改时间
-     */
-    public void initAddUpdateTime() {
-        setAddTime(new Date());
-        setUpdateTime(new Date());
-    }
 }

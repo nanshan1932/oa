@@ -32,6 +32,7 @@ public class StaffController {
     @ApiOperation("分页获取礼品卡差异统计")
     @GetMapping(value = "/getStaffPage")
     public Map<String, Object> getStaffPage(@Validated StaffSearchDto dto, BindingResult result) {
+        log.info("查询参数为：{}", dto);
         checkValidResult(result);
         return staffService.getStaffPage(dto);
     }
@@ -45,5 +46,4 @@ public class StaffController {
             throw new RuntimeException(errorMsg.toString());
         }
     }
-
 }
