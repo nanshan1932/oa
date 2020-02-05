@@ -1,5 +1,6 @@
 package com.naokang.oa.dao.biz.staff.entity;
 
+import com.naokang.oa.dao.base.entity.BaseEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
@@ -15,14 +16,9 @@ import java.util.Date;
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
-public class StaffEntity implements Serializable {
+public class StaffEntity extends BaseEntity {
 
     private static final long serialVersionUID = 6880763198370524458L;
-
-    /**
-     * id
-     */
-    private Integer id;
 
     /**
      * 姓名
@@ -142,37 +138,4 @@ public class StaffEntity implements Serializable {
      * 社保id
      */
     private Integer ssId;
-
-    /**
-     * 备注
-     */
-    private String remark;
-
-    /**
-     * 添加时间
-     */
-    private Date addTime;
-
-    /**
-     * 更新时间
-     */
-    private Date updateTime;
-
-    /**
-     * 操作人Id
-     */
-    private Integer optId;
-
-    /**
-     * 标识(是否有效 0有效；-1无效)
-     */
-    private Integer mark;
-
-    /**
-     * 初始化添加时间与修改时间
-     */
-    public void initAddUpdateTime() {
-        setAddTime(new Date());
-        setUpdateTime(new Date());
-    }
 }

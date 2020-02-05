@@ -1,10 +1,9 @@
 package com.naokang.oa.dao.biz.dictionary.entity;
 
+import com.naokang.oa.dao.base.entity.BaseEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
-
-import java.util.Date;
 
 /**
  * 数据字典
@@ -12,13 +11,9 @@ import java.util.Date;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-public class DictionaryEntity {
-    private static final long serialVersionUID = 1L;
+public class DictionaryEntity extends BaseEntity {
 
-    /**
-     * id
-     */
-    private Integer id;
+    private static final long serialVersionUID = 4447086840849416673L;
 
     /**
      * 名称
@@ -39,29 +34,4 @@ public class DictionaryEntity {
      * 类别描述
      */
     private String typeDes;
-
-    /**
-     * 备注
-     */
-    private String remark;
-
-    /**
-     * 添加时间
-     */
-    private Date addTime;
-
-    /**
-     * 更新时间
-     */
-    private Date updateTime;
-
-    /**
-     * 操作人Id
-     */
-    private Integer optId;
-
-    /**
-     * 标识(是否有效 0有效；-1无效)
-     */
-    private Integer mark;
 }
