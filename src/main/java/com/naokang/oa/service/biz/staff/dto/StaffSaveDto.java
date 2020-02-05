@@ -62,7 +62,7 @@ public class StaffSaveDto {
     /**
      * 职称
      */
-    private Integer title;
+    private String title;
 
 
     /**
@@ -118,6 +118,10 @@ public class StaffSaveDto {
      */
     private String contactPerson;
 
+    /**
+     * 电话
+     */
+    private String contractPeriodTel;
 
     /**
      * 合同期限

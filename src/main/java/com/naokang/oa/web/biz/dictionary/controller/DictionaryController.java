@@ -2,6 +2,8 @@ package com.naokang.oa.web.biz.dictionary.controller;
 
 import com.naokang.oa.service.biz.dictionary.IDictionaryService;
 import com.naokang.oa.service.biz.dictionary.dto.DictionarySaveDto;
+import com.naokang.oa.service.biz.dictionary.dto.DictionarySearchDto;
+import com.naokang.oa.service.biz.dictionary.dto.DictionaryViewDto;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
@@ -10,6 +12,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -25,6 +28,12 @@ public class DictionaryController {
     @GetMapping(value = "/dictList")
     public Map<String, Object> dictList() {
         return dictionaryService.getDictionaryPage();
+    }
+
+    @ApiOperation("获取字典列表")
+    @GetMapping(value = "/searchDictList")
+    public List<DictionaryViewDto> searchDictList(DictionarySearchDto dto) {
+        return dictionaryService.searchDictList(dto);
     }
 
     @ApiOperation("添加字典值")

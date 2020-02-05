@@ -49,6 +49,6 @@ public class StaffSearchDto extends BaseParamDto {
     /**
      * 职称
      */
-    private Integer title;
+    private String title;
 
 }

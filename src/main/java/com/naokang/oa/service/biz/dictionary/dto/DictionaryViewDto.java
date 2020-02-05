@@ -1,9 +1,10 @@
 package com.naokang.oa.service.biz.dictionary.dto;
 
+import com.naokang.oa.common.dto.BaseViewDto;
 import lombok.Data;
 
 @Data
-public class DictionaryViewDto {
+public class DictionaryViewDto extends BaseViewDto {
     /**
      * id
      */
