@@ -3,15 +3,15 @@ package com.naokang.oa.service.biz.staff.impl;
 import com.naokang.oa.common.utils.BeanUtilsExt;
 import com.naokang.oa.dao.biz.staff.entity.StaffEntity;
 import com.naokang.oa.dao.biz.staff.mapper.StaffMapper;
+import com.naokang.oa.service.base.converter.AbstractEntityDtoConverter;
 import com.naokang.oa.service.biz.staff.IStaffService;
 import com.naokang.oa.service.biz.staff.dto.StaffSaveDto;
 import com.naokang.oa.service.biz.staff.dto.StaffSearchDto;
 import com.naokang.oa.service.biz.staff.dto.StaffViewDto;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.util.CollectionUtils;
 
 import javax.annotation.Resource;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -25,6 +25,9 @@ public class StaffServiceImpl implements IStaffService {
 
     @Resource
     private StaffMapper staffMapper;
+
+    @Autowired
+    private AbstractEntityDtoConverter<StaffEntity, StaffViewDto> staffEntityDtoConverter;
 
     @Override
     public void addStaff(StaffSaveDto dto) {
@@ -41,45 +44,13 @@ public class StaffServiceImpl implements IStaffService {
         Integer total = staffMapper.selectPageCount(param);
 
         Map<String, Object> resultInfo = new HashMap<>(8);
-        resultInfo.put("pageSize", 10);
-        resultInfo.put("pageNo", 0);
+        resultInfo.put("pageSize", dto.getPageSize());
+        resultInfo.put("pageNo", dto.getPageSize());
         resultInfo.put("totalPage", 6);
         resultInfo.put("totalCount", total);
-        resultInfo.put("data", convert2ViewDtoList(staffEntities, StaffViewDto.class));
+        resultInfo.put("data", staffEntityDtoConverter.convert2ViewDtoList(staffEntities, StaffViewDto.class));
         Map<String, Object> rst = new HashMap<>(8);
         rst.put("result", resultInfo);
         return rst;
-    }
-
-    /**
-     * 模板方法，实体列表转视图dto列表。<br>
-     * 默认只转换名称与类型相同的字段。
-     *
-     * @param entityList 待转换实体列表
-     * @param dtoClass dto类型
-     * @return dto列表
-     */
-    public final List<StaffViewDto> convert2ViewDtoList(List<StaffEntity> entityList, Class<StaffViewDto> dtoClass) {
-        List<StaffViewDto> dtoList = new ArrayList<>();
-        if (CollectionUtils.isEmpty(entityList)) {
-            return dtoList;
-        }
-
-        try {
-            for (StaffEntity entity : entityList) {
-                StaffViewDto dto = dtoClass.newInstance();
-                BeanUtilsExt.copy(entity, dto);
-                convert2ViewDtoPostHandle(entity, dto);
-                dtoList.add(dto);
-            }
-        }
-        catch (Exception e) {
-            throw new RuntimeException("实体列表转视图dto列表出错！", e);
-        }
-        return dtoList;
-    }
-
-    private void convert2ViewDtoPostHandle(StaffEntity entity, StaffViewDto dto) {
-        dto.setSexTxt("男");
     }
 }

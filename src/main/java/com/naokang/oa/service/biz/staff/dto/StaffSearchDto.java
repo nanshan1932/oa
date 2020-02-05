@@ -1,5 +1,6 @@
 package com.naokang.oa.service.biz.staff.dto;
 
+import com.naokang.oa.common.dto.BaseParamDto;
 import lombok.Data;
 
 import java.util.Date;
@@ -9,7 +10,7 @@ import java.util.Date;
  * @data 2020/1/15
  */
 @Data
-public class StaffSearchDto {
+public class StaffSearchDto extends BaseParamDto {
     /**
      * 姓名
      */
@@ -49,15 +50,5 @@ public class StaffSearchDto {
      * 职称
      */
     private Integer title;
-
-    /**
-     * 每页大小
-     */
-    private Integer pageSize;
-
-    /**
-     * 页数
-     */
-    private Integer pageNo;
 
 }
