@@ -58,6 +58,7 @@ public class DepartmentServiceImpl implements IDepartmentService {
             DepartmentEntity node = curNodeList.get(i);
             Map<String, Object> map = new HashMap<>();
             map.put("key", node.getId());
+            map.put("value", node.getId());
             map.put("title", node.getDeptName());
             List<Map<String, Object>> childList = getNodeListRecursion(node.getId());
             if(!CollectionUtils.isEmpty(childList)){

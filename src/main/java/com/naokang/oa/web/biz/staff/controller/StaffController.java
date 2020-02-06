@@ -3,6 +3,7 @@ package com.naokang.oa.web.biz.staff.controller;
 import com.naokang.oa.service.biz.staff.IStaffService;
 import com.naokang.oa.service.biz.staff.dto.StaffSaveDto;
 import com.naokang.oa.service.biz.staff.dto.StaffSearchDto;
+import com.naokang.oa.web.base.controller.AbstractController;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
@@ -25,32 +26,23 @@ import java.util.Map;
 @RequestMapping("/staff")
 @Api(tags = "staff controller")
 @Slf4j
-public class StaffController {
+public class StaffController extends AbstractController {
 
     @Autowired
     private IStaffService staffService;
 
-    @ApiOperation("添加字典值")
+    @ApiOperation("添加员工")
     @PostMapping(value = "/addStaff")
     public void addStaff(@Validated StaffSaveDto dto, BindingResult result){
+        checkValidResult(result);
         staffService.addStaff(dto);
     }
 
-    @ApiOperation("分页获取礼品卡差异统计")
+    @ApiOperation("分页获取员工列表")
     @GetMapping(value = "/getStaffPage")
     public Map<String, Object> getStaffPage(@Validated StaffSearchDto dto, BindingResult result) {
-        log.info("查询参数为：{}", dto);
         checkValidResult(result);
         return staffService.getStaffPage(dto);
     }
 
-    private void checkValidResult(BindingResult result) {
-        if (result != null && result.hasErrors()) {
-            StringBuilder errorMsg = new StringBuilder();
-            for (ObjectError error : result.getAllErrors()) {
-                errorMsg.append(error.getDefaultMessage());
-            }
-            throw new RuntimeException(errorMsg.toString());
-        }
-    }
 }
