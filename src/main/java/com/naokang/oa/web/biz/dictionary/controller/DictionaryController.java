@@ -51,6 +51,6 @@ public class DictionaryController {
     @ApiOperation("删除字典值")
     @PostMapping(value = "/deleteDict")
     public void deleteDict(@Validated DictionarySaveDto dto, BindingResult result){
-        dictionaryService.deleteById(dto.getId());
+        dictionaryService.deleteDictById(dto.getId());
     }
 }

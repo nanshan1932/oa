@@ -1,7 +1,7 @@
 package com.naokang.oa.dao.biz.staff.mapper;
 
 
-import com.naokang.oa.dao.base.mapper.BaseMapper;
+import com.naokang.oa.dao.base.mapper.IBaseMapper;
 import com.naokang.oa.dao.biz.staff.entity.StaffEntity;
 
 /**
@@ -10,6 +10,6 @@ import com.naokang.oa.dao.biz.staff.entity.StaffEntity;
  * @author 
  * @since 2020-01-15
  */
-public interface StaffMapper extends BaseMapper<StaffEntity> {
+public interface StaffMapper extends IBaseMapper<StaffEntity> {
 }
 

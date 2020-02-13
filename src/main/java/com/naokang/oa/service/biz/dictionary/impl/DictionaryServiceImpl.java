@@ -1,32 +1,36 @@
 package com.naokang.oa.service.biz.dictionary.impl;
 
 import com.naokang.oa.common.constants.SysConstants;
+import com.naokang.oa.dao.base.mapper.IBaseMapper;
 import com.naokang.oa.dao.biz.dictionary.entity.DictionaryEntity;
 import com.naokang.oa.dao.biz.dictionary.mapper.DictionaryMapper;
 import com.naokang.oa.service.base.converter.AbstractEntityDtoConverter;
+import com.naokang.oa.service.base.impl.BaseServiceImpl;
 import com.naokang.oa.service.biz.dictionary.IDictionaryService;
 import com.naokang.oa.service.biz.dictionary.dto.DictionarySaveDto;
 import com.naokang.oa.service.biz.dictionary.dto.DictionarySearchDto;
 import com.naokang.oa.service.biz.dictionary.dto.DictionaryViewDto;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cglib.beans.BeanCopier;
 import org.springframework.stereotype.Service;
-import org.springframework.util.CollectionUtils;
 
 import javax.annotation.Resource;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 @Service("dictionaryService")
-public class DictionaryServiceImpl implements IDictionaryService {
+public class DictionaryServiceImpl extends BaseServiceImpl<DictionaryEntity> implements IDictionaryService {
 
     @Resource
     private DictionaryMapper dictionaryMapper;
 
     @Autowired
     private AbstractEntityDtoConverter<DictionaryEntity, DictionaryViewDto> dictionaryEntityDtoConverter;
+
+    @Override
+    public IBaseMapper<DictionaryEntity> getMapper() {
+        return dictionaryMapper;
+    }
 
     @Override
     public Map<String, Object> getDictionaryPage() {
@@ -68,7 +72,7 @@ public class DictionaryServiceImpl implements IDictionaryService {
     }
 
     @Override
-    public void deleteById(Integer id) {
+    public void deleteDictById(Integer id) {
         dictionaryMapper.deleteById(id);
     }
 
@@ -79,5 +83,17 @@ public class DictionaryServiceImpl implements IDictionaryService {
         entityInfo.setMark(SysConstants.MarkType.VALID);
         List<DictionaryEntity> entityList = dictionaryMapper.selectEntities(entityInfo);
         return dictionaryEntityDtoConverter.convert2ViewDtoList(entityList, DictionaryViewDto.class);
+    }
+
+    @Override
+    public String getDictNameByCode(Integer code, Integer type) {
+        DictionaryEntity entityInfo = new DictionaryEntity();
+        entityInfo.setCode(code);
+        entityInfo.setType(type);
+        DictionaryEntity entity = selectEntity(entityInfo);
+        if(entity == null){
+            return "";
+        }
+        return entity.getName();
     }
 }

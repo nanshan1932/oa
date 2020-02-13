@@ -1,6 +1,7 @@
 package com.naokang.oa.service.base.converter;
 
 import com.naokang.oa.common.dto.BaseParamDto;
+import com.naokang.oa.common.exception.BusinessException;
 import net.sf.cglib.beans.BeanCopier;
 import org.apache.commons.collections4.CollectionUtils;
 import org.slf4j.Logger;
@@ -52,7 +53,7 @@ public abstract class AbstractEntityDtoConverter<E, D> {
             }
         }
         catch (Exception e) {
-            throw new RuntimeException("实体列表转视图dto列表出错！", e);
+            throw new BusinessException("实体列表转视图dto列表出错！", e);
         }
         return dtoList;
     }
@@ -75,7 +76,7 @@ public abstract class AbstractEntityDtoConverter<E, D> {
             return dto;
         }
         catch (Exception e) {
-            throw new RuntimeException("实体转视图dto出错！", e);
+            throw new BusinessException("实体转视图dto出错！", e);
         }
     }
 
@@ -109,7 +110,7 @@ public abstract class AbstractEntityDtoConverter<E, D> {
             }
         }
         catch (Exception e) {
-            throw new RuntimeException("视图dto列表转map列表出错！", e);
+            throw new BusinessException("视图dto列表转map列表出错！", e);
         }
         return list;
     }
@@ -140,7 +141,7 @@ public abstract class AbstractEntityDtoConverter<E, D> {
             return entity;
         }
         catch (Exception e) {
-            throw new RuntimeException("参数dto转实体出错！", e);
+            throw new BusinessException("参数dto转实体出错！", e);
         }
     }
 

@@ -71,7 +71,7 @@ public class StaffEntity extends BaseEntity {
     /**
      * 职称
      */
-    private Integer title;
+    private String title;
 
 
     /**

@@ -1,14 +1,12 @@
 package com.naokang.oa.dao.base.mapper;
 
 import com.naokang.oa.dao.base.entity.BaseEntity;
-import com.naokang.oa.dao.biz.dept.entity.DepartmentEntity;
-import com.naokang.oa.dao.biz.dictionary.entity.DictionaryEntity;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 import java.util.Map;
 
-public interface BaseMapper<T extends BaseEntity> {
+public interface IBaseMapper<T extends BaseEntity> {
     /**
      * 新增
      * @param entity

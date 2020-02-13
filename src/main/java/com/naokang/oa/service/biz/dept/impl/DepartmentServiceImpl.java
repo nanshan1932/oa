@@ -1,7 +1,9 @@
 package com.naokang.oa.service.biz.dept.impl;
 
+import com.naokang.oa.dao.base.mapper.IBaseMapper;
 import com.naokang.oa.dao.biz.dept.entity.DepartmentEntity;
 import com.naokang.oa.dao.biz.dept.mapper.DepartmentMapper;
+import com.naokang.oa.service.base.impl.BaseServiceImpl;
 import com.naokang.oa.service.biz.dept.IDepartmentService;
 import com.naokang.oa.service.biz.dept.dto.DepartMentSaveDto;
 import org.springframework.stereotype.Service;
@@ -15,10 +17,16 @@ import java.util.List;
 import java.util.Map;
 
 @Service("departmentService")
-public class DepartmentServiceImpl implements IDepartmentService {
+public class DepartmentServiceImpl extends BaseServiceImpl<DepartmentEntity> implements IDepartmentService {
 
     @Resource
     DepartmentMapper departmentMapper;
+
+
+    @Override
+    public IBaseMapper<DepartmentEntity> getMapper() {
+        return departmentMapper;
+    }
 
     @Override
     public void addDept(DepartMentSaveDto dto) {
@@ -26,6 +34,17 @@ public class DepartmentServiceImpl implements IDepartmentService {
         entity.setParentId(dto.getParentId());
         entity.setDeptName(dto.getDeptName());
         departmentMapper.insertInto(entity);
+    }
+
+    @Override
+    public String getDeptNameById(Integer deptId) {
+        DepartmentEntity entityInfo = new DepartmentEntity();
+        entityInfo.setId(deptId);
+        DepartmentEntity deptEntity = selectEntity(entityInfo);
+        if(deptEntity == null){
+            return "";
+        }
+        return deptEntity.getDeptName();
     }
 
     @Override
@@ -69,4 +88,5 @@ public class DepartmentServiceImpl implements IDepartmentService {
         }
         return nodeList;
     }
+
 }

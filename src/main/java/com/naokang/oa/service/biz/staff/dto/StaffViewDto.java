@@ -25,7 +25,7 @@ public class StaffViewDto extends BaseViewDto {
     /**
      * 1男 2女
      */
-    private String sexTxt;
+    private Integer sex;
 
 
     /**
@@ -37,7 +37,7 @@ public class StaffViewDto extends BaseViewDto {
     /**
      * 学历 1中专 2大专 3本科 4研究生...
      */
-    private String educationTxt;
+    private Integer education;
 
 
     /**
@@ -49,25 +49,25 @@ public class StaffViewDto extends BaseViewDto {
     /**
      * 婚姻状况 1未婚 2已婚 3离异 4丧偶
      */
-    private Integer maritalStatusTxt;
+    private Integer maritalStatus;
 
 
     /**
      * 部门
      */
-    private String department;
+    private Integer deptId;
 
 
     /**
      * 岗位
      */
-    private String postTxt;
+    private Integer post;
 
 
     /**
      * 职称
      */
-    private String titleTxt;
+    private String title;
 
 
     /**
@@ -131,8 +131,28 @@ public class StaffViewDto extends BaseViewDto {
 
 
     /**
-     * 社保id
+     * 性别
      */
-    private Integer ssId;
+    private String sexTxt;
+
+    /**
+     * 学历
+     */
+    private String educationTxt;
+
+    /**
+     * 岗位
+     */
+    private String postTxt;
+
+    /**
+     * 婚姻状况
+     */
+    private String maritalStatusTxt;
+
+    /**
+     * 部门
+     */
+    private String department;
 
 }

@@ -1,5 +1,6 @@
 package com.naokang.oa.web.system.converter;
 
+import com.naokang.oa.common.exception.BusinessException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
@@ -39,9 +40,9 @@ public class StringToDateConverter implements Converter<String, Date> {
                 return new Date(lDate);
             }
         } catch (Exception e) {
-            throw new RuntimeException(String.format("parser %s to Date failed", value));
+            throw new BusinessException(String.format("parser %s to Date failed", value));
         }
-        throw new RuntimeException(String.format("parser %s to Date failed", value));
+        throw new BusinessException(String.format("parser %s to Date failed", value));
     }
 
 }

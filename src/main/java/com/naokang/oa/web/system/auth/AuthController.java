@@ -1,6 +1,6 @@
 package com.naokang.oa.web.system.auth;
 
-import com.naokang.oa.service.biz.staff.dto.StaffSearchDto;
+import com.naokang.oa.common.exception.BusinessException;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
@@ -28,7 +28,7 @@ public class AuthController {
     @PostMapping(value = "/login")
     public Map<String, Object> login(@RequestBody @Validated LoginDto dto, BindingResult result) {
         if(!USERNAME.equals(dto.getUsername()) || !PASSWORD.equals(dto.getPassword())){
-            throw new RuntimeException("用户名或者密码错误！");
+            throw new BusinessException("用户名或者密码错误！");
         }
         Map<String, Object> rst = new HashMap<>(8);
         Map<String, Object> resultInfo = new HashMap<>(8);
