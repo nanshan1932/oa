@@ -123,11 +123,20 @@ public class StaffViewDto extends BaseViewDto {
      */
     private String contactPerson;
 
+    /**
+     * 紧急联系人电话
+     */
+    private String contactPersonTel;
 
     /**
      * 合同期限
      */
     private String contractPeriod;
+
+    /**
+     * 是否缴纳社保
+     */
+    private Integer ssFlag;
 
 
     /**
@@ -154,5 +163,10 @@ public class StaffViewDto extends BaseViewDto {
      * 部门
      */
     private String department;
+
+    /**
+     * 是否缴纳社保
+     */
+    private String ssFlagTxt;
 
 }

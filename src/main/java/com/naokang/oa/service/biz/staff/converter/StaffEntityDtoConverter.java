@@ -26,6 +26,7 @@ public class StaffEntityDtoConverter extends BaseEntityDtoConverter<StaffEntity,
         dto.setMaritalStatusTxt(dictionaryService.getDictNameByCode(entity.getMaritalStatus(), VarsConstants.DictType.MARITAL_STATUS_TYPE));
         dto.setPostTxt(dictionaryService.getDictNameByCode(entity.getPost(), VarsConstants.DictType.POST_TYPE));
         dto.setDepartment(departmentService.getDeptNameById(entity.getDeptId()));
+        dto.setSsFlagTxt(entity.getSsFlag() == 1 ? "是" : "否");
     }
 
     @Override

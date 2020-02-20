@@ -127,6 +127,10 @@ public class StaffEntity extends BaseEntity {
      */
     private String contactPerson;
 
+    /**
+     * 紧急联系人电话
+     */
+    private String contactPersonTel;
 
     /**
      * 合同期限
@@ -135,7 +139,7 @@ public class StaffEntity extends BaseEntity {
 
 
     /**
-     * 社保id
+     * 社保
      */
-    private Integer ssId;
+    private Integer ssFlag;
 }
