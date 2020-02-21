@@ -2,6 +2,7 @@ package com.naokang.oa.service.biz.staff.dto;
 
 import com.naokang.oa.common.dto.BaseParamDto;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.util.Date;
 
@@ -10,6 +11,7 @@ import java.util.Date;
  * @data 2020/1/15
  */
 @Data
+@EqualsAndHashCode(callSuper = false)
 public class StaffSearchDto extends BaseParamDto {
     /**
      * 姓名

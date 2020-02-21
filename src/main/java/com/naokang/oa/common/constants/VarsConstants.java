@@ -7,6 +7,10 @@ public class VarsConstants {
 
     public static class DictType{
         /**
+         * 是否
+         */
+        public static final Integer YES_NO_TYPE = 1000;
+        /**
          * 性别
          */
         public static final Integer SEX_TYPE = 1001;

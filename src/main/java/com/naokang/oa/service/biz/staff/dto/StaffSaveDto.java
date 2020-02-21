@@ -8,6 +8,11 @@ import java.util.Date;
 
 @Data
 public class StaffSaveDto {
+
+    /**
+     * ID
+     */
+    private Integer id;
     /**
      * 姓名
      */
@@ -121,10 +126,15 @@ public class StaffSaveDto {
     /**
      * 电话
      */
-    private String contractPeriodTel;
+    private String contactPersonTel;
 
     /**
      * 合同期限
      */
     private String contractPeriod;
+
+    /**
+     * 是否缴纳社保
+     */
+    private Integer ssFlag;
 }

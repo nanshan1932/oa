@@ -23,4 +23,10 @@ public interface IStaffService {
      * @param dto
      */
     void addStaff(StaffSaveDto dto);
+
+    /**
+     * 修改员工信息
+     * @param dto
+     */
+    void updateStaff(StaffSaveDto dto);
 }

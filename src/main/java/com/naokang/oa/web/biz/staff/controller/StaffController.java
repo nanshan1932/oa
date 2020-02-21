@@ -37,6 +37,15 @@ public class StaffController extends AbstractController {
         staffService.addStaff(dto);
     }
 
+    @ApiOperation("修改员工信息")
+    @PostMapping(value = "/updateStaff")
+    public void updateStaff(@Validated StaffSaveDto dto, BindingResult result){
+        checkValidResult(result);
+        staffService.updateStaff(dto);
+    }
+
+
+
     @ApiOperation("分页获取员工列表")
     @GetMapping(value = "/getStaffPage")
     public Map<String, Object> getStaffPage(@Validated StaffSearchDto dto, BindingResult result) {

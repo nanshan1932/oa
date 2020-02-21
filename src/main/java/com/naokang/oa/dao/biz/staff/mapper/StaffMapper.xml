@@ -15,6 +15,7 @@
             <if test="sex != null">sex = #{sex},</if>
             <if test="idNumber != null">id_number = #{idNumber},</if>
             <if test="education != null">education = #{education},</if>
+            <if test="ethnicity != null">ethnicity = #{ethnicity},</if>
             <if test="maritalStatus != null">marital_status = #{maritalStatus},</if>
             <if test="deptId != null">dept_id = #{deptId},</if>
             <if test="post != null">post = #{post},</if>
@@ -46,6 +47,7 @@
             <if test="sex != null">and sex = #{sex}</if>
             <if test="idNumber != null">and id_number = #{idNumber}</if>
             <if test="education != null">and education = #{education}</if>
+            <if test="ethnicity != null">and ethnicity = #{ethnicity}</if>
             <if test="maritalStatus != null">and marital_status = #{maritalStatus}</if>
             <if test="deptId != null">and dept_id = #{deptId}</if>
             <if test="post != null">and post = #{post}</if>
@@ -56,6 +58,8 @@
             <if test="registeredPermanentResidence != null">and registered_permanent_residence = #{registeredPermanentResidence}</if>
             <if test="address != null">and address = #{address}</if>
             <if test="entryDate != null">and entry_date = #{entryDate}</if>
+            <if test="entryDateStart != null">and entry_date &gt;= #{entryDateStart}</if>
+            <if test="entryDateEnd != null"> and entry_date &lt;= #{entryDateEnd}</if>
             <if test="resignationDate != null">and resignation_date = #{resignationDate}</if>
             <if test="telNumber != null">and tel_number = #{telNumber}</if>
             <if test="contactPerson != null">and contact_person = #{contactPerson}</if>
@@ -76,6 +80,7 @@
             <if test="sex != null">sex,</if>
             <if test="idNumber != null">id_number,</if>
             <if test="education != null">education,</if>
+            <if test="ethnicity != null">ethnicity,</if>
             <if test="maritalStatus != null">marital_status,</if>
             <if test="deptId != null">dept_id,</if>
             <if test="post != null">post,</if>
@@ -107,6 +112,7 @@
             <if test="sex != null">#{sex},</if>
             <if test="idNumber != null">#{idNumber},</if>
             <if test="education != null">#{education},</if>
+            <if test="ethnicity != null">#{ethnicity},</if>
             <if test="maritalStatus != null">#{maritalStatus},</if>
             <if test="deptId != null">#{deptId},</if>
             <if test="post != null">#{post},</if>

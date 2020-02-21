@@ -45,6 +45,13 @@ public class StaffServiceImpl extends BaseServiceImpl<StaffEntity> implements IS
     }
 
     @Override
+    public void updateStaff(StaffSaveDto dto) {
+        StaffEntity entity = new StaffEntity();
+        BeanUtilsExt.copy(dto, entity);
+        updateInto(entity);
+    }
+
+    @Override
     public Map<String, Object> getStaffPage(StaffSearchDto dto) {
         List<StaffEntity> staffEntities = staffMapper.selectPageEntities(dto.convertParamDto2PageQueryMap());
         Integer total = staffMapper.selectPageCount(dto.convertParamDto2PageQueryMap());

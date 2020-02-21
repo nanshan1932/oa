@@ -2,6 +2,7 @@ package com.naokang.oa.service.biz.staff.dto;
 
 import com.naokang.oa.common.dto.BaseViewDto;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.util.Date;
 
@@ -10,6 +11,7 @@ import java.util.Date;
  * @date 2020/1/18
  */
 @Data
+@EqualsAndHashCode(callSuper = false)
 public class StaffViewDto extends BaseViewDto {
     /**
      * id
