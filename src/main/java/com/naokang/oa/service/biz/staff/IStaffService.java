@@ -2,6 +2,9 @@ package com.naokang.oa.service.biz.staff;
 
 import com.naokang.oa.service.biz.staff.dto.StaffSaveDto;
 import com.naokang.oa.service.biz.staff.dto.StaffSearchDto;
+import com.naokang.oa.service.biz.staff.dto.StaffUploadDto;
+import org.jeecgframework.poi.excel.entity.result.ExcelImportResult;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.Map;
 
@@ -29,4 +32,18 @@ public interface IStaffService {
      * @param dto
      */
     void updateStaff(StaffSaveDto dto);
+
+    /**
+     * 上传excel文件
+     * @param file
+     * @return
+     */
+    ExcelImportResult<StaffUploadDto> uploadStaffByExcel(MultipartFile file);
+
+    /**
+     * 插入excel中的文件
+     * @param excelImportResult
+     * @return
+     */
+    Map<String, Object> insertStaffByExcel(ExcelImportResult<StaffUploadDto> excelImportResult);
 }

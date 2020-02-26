@@ -89,4 +89,14 @@ public class DepartmentServiceImpl extends BaseServiceImpl<DepartmentEntity> imp
         return nodeList;
     }
 
+    @Override
+    public Integer getDeptIdByName(String deptName) {
+        DepartmentEntity entityInfo = new DepartmentEntity();
+        entityInfo.setDeptName(deptName);
+        DepartmentEntity deptEntity = selectEntity(entityInfo);
+        if(deptEntity == null){
+            return null;
+        }
+        return deptEntity.getId();
+    }
 }

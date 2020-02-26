@@ -1,6 +1,5 @@
 package com.naokang.oa.service.biz.dictionary;
 
-import com.naokang.oa.dao.biz.dictionary.entity.DictionaryEntity;
 import com.naokang.oa.service.biz.dictionary.dto.DictionarySaveDto;
 import com.naokang.oa.service.biz.dictionary.dto.DictionarySearchDto;
 import com.naokang.oa.service.biz.dictionary.dto.DictionaryViewDto;
@@ -47,4 +46,12 @@ public interface IDictionaryService {
      * @return
      */
     String getDictNameByCode(Integer code, Integer type);
+
+    /**
+     * 根据name、type获取字典值code
+     * @param name
+     * @param type
+     * @return
+     */
+    Integer getDictCodeByName(String name, Integer type);
 }

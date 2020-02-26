@@ -96,4 +96,16 @@ public class DictionaryServiceImpl extends BaseServiceImpl<DictionaryEntity> imp
         }
         return entity.getName();
     }
+
+    @Override
+    public Integer getDictCodeByName(String name, Integer type) {
+        DictionaryEntity entityInfo = new DictionaryEntity();
+        entityInfo.setName(name);
+        entityInfo.setType(type);
+        DictionaryEntity entity = selectEntity(entityInfo);
+        if(entity == null){
+            return null;
+        }
+        return entity.getCode();
+    }
 }

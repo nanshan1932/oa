@@ -179,4 +179,23 @@
             limit #{pageBegin},#{pageSize}
         </if>
     </select>
+
+    <!--批量新增-->
+    <insert id="insertBatch" parameterType="java.util.List">
+        insert into oa_staff(
+         name, sex, id_number, education, ethnicity, marital_status, dept_id, post,
+         title, graduate_institution, major, birth_day,
+         registered_permanent_residence, address, entry_date, resignation_date,
+         tel_number, contact_person, contact_person_tel, contract_period, ss_flag
+        )
+        values
+        <foreach collection="list" item="obj" index="index" separator=",">
+            (
+            #{obj.name},#{obj.sex},#{obj.idNumber},#{obj.education},#{obj.ethnicity},#{obj.maritalStatus},#{obj.deptId},#{obj.post},
+            #{obj.title},#{obj.graduateInstitution},#{obj.major},#{obj.birthDay},#{obj.registeredPermanentResidence},
+            #{obj.address},#{obj.entryDate},#{obj.resignationDate},#{obj.telNumber},#{obj.contactPerson},
+            #{obj.contactPersonTel},#{obj.contractPeriod},#{obj.ssFlag}
+            )
+        </foreach>
+    </insert>
 </mapper>

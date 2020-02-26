@@ -26,4 +26,11 @@ public interface IDepartmentService extends IBaseService<DepartmentEntity> {
      * @return
      */
     String getDeptNameById(Integer deptId);
+
+    /**
+     * 通过部门名称获取部门ID
+     * @param deptName
+     * @return
+     */
+    Integer getDeptIdByName(String deptName);
 }
