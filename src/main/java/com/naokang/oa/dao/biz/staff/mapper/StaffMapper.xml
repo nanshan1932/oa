@@ -4,7 +4,7 @@
 
     <sql id="fields"><!-- ALl Fields -->
         id, name, sex, id_number, education, ethnicity, marital_status, dept_id, post, title, graduate_institution, major, birth_day,
-        registered_permanent_residence, address, entry_date, resignation_date, tel_number, contact_person, contact_person_tel, contract_period, ss_flag,
+        registered_permanent_residence, address, entry_date, resignation_date, tel_number, contact_person, contact_person_tel, contract_period, ss_flag, job_flag
         remark, opt_id, add_time, update_time, mark
     </sql>
 
@@ -32,6 +32,7 @@
             <if test="contactPersonTel != null">contact_person_tel = #{contactPersonTel},</if>
             <if test="contractPeriod != null">contract_period = #{contractPeriod},</if>
             <if test="ssFlag != null">ss_flag = #{ssFlag},</if>
+            <if test="jobFlag != null">job_flag = #{jobFlag},</if>
             <if test="remark != null">remark = #{remark},</if>
             <if test="optId != null">opt_id = #{optId},</if>
             <if test="addTime != null">add_time = #{addTime},</if>
@@ -61,11 +62,14 @@
             <if test="entryDateStart != null">and entry_date &gt;= #{entryDateStart}</if>
             <if test="entryDateEnd != null"> and entry_date &lt;= #{entryDateEnd}</if>
             <if test="resignationDate != null">and resignation_date = #{resignationDate}</if>
+            <if test="resignationDateStart != null">and resignation_date &gt;= #{resignationDateStart}</if>
+            <if test="resignationDateEnd != null"> and resignation_date &lt;= #{resignationDateEnd}</if>
             <if test="telNumber != null">and tel_number = #{telNumber}</if>
             <if test="contactPerson != null">and contact_person = #{contactPerson}</if>
             <if test="contactPersonTel != null">and contact_person_tel = #{contactPersonTel}</if>
             <if test="contractPeriod != null">and contract_period = #{contractPeriod}</if>
             <if test="ssFlag != null">and ss_flag = #{ssFlag}</if>
+            <if test="jobFlag != null">and job_flag = #{jobFlag}</if>
             <if test="remark != null">and remark = #{remark}</if>
             <if test="optId != null">and opt_id = #{optId}</if>
             <if test="addTime != null">and add_time = #{addTime}</if>
@@ -97,6 +101,7 @@
             <if test="contactPersonTel != null">contact_person_tel,</if>
             <if test="contractPeriod != null">contract_period,</if>
             <if test="ssFlag != null">ss_flag,</if>
+            <if test="jobFlag != null">job_flag,</if>
             <if test="remark != null">remark,</if>
             <if test="optId != null">opt_id,</if>
             <if test="addTime != null">add_time,</if>
@@ -129,6 +134,7 @@
             <if test="contactPersonTel != null">#{contactPersonTel},</if>
             <if test="contractPeriod != null">#{contractPeriod},</if>
             <if test="ssFlag != null">#{ssFlag},</if>
+            <if test="jobFlag != null">#{jobFlag},</if>
             <if test="remark != null">#{remark},</if>
             <if test="optId != null">#{optId},</if>
             <if test="addTime != null">#{addTime},</if>

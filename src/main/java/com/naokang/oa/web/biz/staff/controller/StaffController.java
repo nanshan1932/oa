@@ -1,8 +1,10 @@
 package com.naokang.oa.web.biz.staff.controller;
 
+import com.naokang.oa.common.constants.SysConstants;
 import com.naokang.oa.common.constants.VarsConstants;
 import com.naokang.oa.common.exception.BusinessException;
 import com.naokang.oa.service.biz.staff.IStaffService;
+import com.naokang.oa.service.biz.staff.dto.StaffResignDto;
 import com.naokang.oa.service.biz.staff.dto.StaffSaveDto;
 import com.naokang.oa.service.biz.staff.dto.StaffSearchDto;
 import com.naokang.oa.service.biz.staff.dto.StaffUploadDto;
@@ -46,14 +48,29 @@ public class StaffController extends AbstractController {
         staffService.updateStaff(dto);
     }
 
-
+    @ApiOperation("离职")
+    @PostMapping(value = "/resign")
+    public void resign(@Validated StaffResignDto dto, BindingResult result){
+        checkValidResult(result);
+        staffService.resign(dto);
+    }
 
     @ApiOperation("分页获取员工列表")
-    @GetMapping(value = "/getStaffPage")
-    public Map<String, Object> getStaffPage(@Validated StaffSearchDto dto, BindingResult result) {
+    @GetMapping(value = "/getStaffOnJobPage")
+    public Map<String, Object> getStaffOnJobPage(@Validated StaffSearchDto dto, BindingResult result) {
         checkValidResult(result);
+        dto.setJobFlag(SysConstants.MarkType.VALID);
         return staffService.getStaffPage(dto);
     }
+
+    @ApiOperation("分页获取离职员工列表")
+    @GetMapping(value = "/getResignStaffPage")
+    public Map<String, Object> getResignStaffPage(@Validated StaffSearchDto dto, BindingResult result) {
+        checkValidResult(result);
+        dto.setJobFlag(SysConstants.MarkType.INVALID);
+        return staffService.getStaffPage(dto);
+    }
+
 
     @ApiOperation(value = "上传调整数据")
     @PostMapping(value = "/uploadFile")

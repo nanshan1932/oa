@@ -137,6 +137,10 @@ public class StaffEntity extends BaseEntity {
      */
     private String contractPeriod;
 
+    /**
+     * 在职状态  0 在职  -1 离职
+     */
+    private Integer jobFlag;
 
     /**
      * 社保

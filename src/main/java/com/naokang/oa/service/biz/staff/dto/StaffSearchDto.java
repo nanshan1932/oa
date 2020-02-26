@@ -1,5 +1,7 @@
 package com.naokang.oa.service.biz.staff.dto;
 
+import com.naokang.oa.common.constants.SysConstants;
+import com.naokang.oa.common.constants.VarsConstants;
 import com.naokang.oa.common.dto.BaseParamDto;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -44,6 +46,16 @@ public class StaffSearchDto extends BaseParamDto {
     private Date entryDateEnd;
 
     /**
+     * 离职日期   从
+     */
+    private Date resignationDateStart;
+
+    /**
+     * 离职日期  至
+     */
+    private Date resignationDateEnd;
+
+    /**
      * 是否缴纳社保 social security（ss）
      */
     private Integer ssFlag;
@@ -52,5 +64,10 @@ public class StaffSearchDto extends BaseParamDto {
      * 职称
      */
     private String title;
+
+    /**
+     * 是否在职
+     */
+    private Integer jobFlag;
 
 }

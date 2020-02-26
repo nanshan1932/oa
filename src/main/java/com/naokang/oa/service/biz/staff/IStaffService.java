@@ -1,5 +1,6 @@
 package com.naokang.oa.service.biz.staff;
 
+import com.naokang.oa.service.biz.staff.dto.StaffResignDto;
 import com.naokang.oa.service.biz.staff.dto.StaffSaveDto;
 import com.naokang.oa.service.biz.staff.dto.StaffSearchDto;
 import com.naokang.oa.service.biz.staff.dto.StaffUploadDto;
@@ -32,6 +33,13 @@ public interface IStaffService {
      * @param dto
      */
     void updateStaff(StaffSaveDto dto);
+
+
+    /**
+     * 离职
+     * @param dto
+     */
+    void resign(StaffResignDto dto);
 
     /**
      * 上传excel文件

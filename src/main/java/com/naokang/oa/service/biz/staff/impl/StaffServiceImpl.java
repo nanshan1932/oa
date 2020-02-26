@@ -1,6 +1,7 @@
 package com.naokang.oa.service.biz.staff.impl;
 
 import com.google.common.collect.Lists;
+import com.naokang.oa.common.constants.SysConstants;
 import com.naokang.oa.common.constants.VarsConstants;
 import com.naokang.oa.common.exception.BusinessException;
 import com.naokang.oa.common.utils.BeanUtilsExt;
@@ -12,10 +13,7 @@ import com.naokang.oa.service.base.impl.BaseServiceImpl;
 import com.naokang.oa.service.biz.dept.IDepartmentService;
 import com.naokang.oa.service.biz.dictionary.IDictionaryService;
 import com.naokang.oa.service.biz.staff.IStaffService;
-import com.naokang.oa.service.biz.staff.dto.StaffSaveDto;
-import com.naokang.oa.service.biz.staff.dto.StaffSearchDto;
-import com.naokang.oa.service.biz.staff.dto.StaffUploadDto;
-import com.naokang.oa.service.biz.staff.dto.StaffViewDto;
+import com.naokang.oa.service.biz.staff.dto.*;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.tools.ant.util.DateUtils;
@@ -100,6 +98,18 @@ public class StaffServiceImpl extends BaseServiceImpl<StaffEntity> implements IS
     }
 
     @Override
+    public void resign(StaffResignDto dto) {
+        String stopMonth = dto.getStopMonth();
+        log.info("断保月份：{}", stopMonth);
+        StaffEntity staffEntity = new StaffEntity();
+        staffEntity.setId(dto.getId());
+        staffEntity.setJobFlag(SysConstants.MarkType.INVALID);
+        staffEntity.setResignationDate(dto.getResignationDate());
+        updateInto(staffEntity);
+        //todo 社保信息更新
+    }
+
+    @Override
     public Map<String, Object> getStaffPage(StaffSearchDto dto) {
         List<StaffEntity> staffEntities = staffMapper.selectPageEntities(dto.convertParamDto2PageQueryMap());
         Integer total = staffMapper.selectPageCount(dto.convertParamDto2PageQueryMap());
@@ -107,7 +117,7 @@ public class StaffServiceImpl extends BaseServiceImpl<StaffEntity> implements IS
         Map<String, Object> resultInfo = new HashMap<>(8);
         resultInfo.put("pageSize", dto.getPageSize());
         resultInfo.put("pageNo", dto.getPageNo());
-        resultInfo.put("totalPage", 6);
+        resultInfo.put("totalPage", dto.getPageSize()/dto.getPageNo());
         resultInfo.put("totalCount", total);
         resultInfo.put("data", staffEntityDtoConverter.convert2ViewDtoList(staffEntities, StaffViewDto.class));
         Map<String, Object> rst = new HashMap<>(8);
