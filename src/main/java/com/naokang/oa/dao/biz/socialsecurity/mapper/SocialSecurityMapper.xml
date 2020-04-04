@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.naokang.oa.dao.biz.socialsecurity.mapper.SocialSecurityMapper">
+
+    <sql id="fields"><!-- ALl Fields -->
+        id, staff_id, ss_no, pay_month, stop_month,remark, opt_id, add_time, update_time, mark
+    </sql>
+
+    <sql id="sets"><!-- Set Fields -->
+        <trim suffixOverrides=",">
+            <if test="id != null">id = #{id},</if>
+            <if test="staffId != null">staff_id = #{staffId},</if>
+            <if test="ssNo != null">ss_no = #{ssNo},</if>
+            <if test="payMonth != null">pay_month = #{payMonth},</if>
+            <if test="stopMonth != null">stop_month = #{stopMonth},</if>
+            <if test="remark != null">remark = #{remark},</if>
+            <if test="optId != null">opt_id = #{optId},</if>
+            <if test="addTime != null">add_time = #{addTime},</if>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
+            <if test="mark != null">mark = #{mark},</if>
+        </trim>
+    </sql>
+
+    <sql id="conditions"><!-- Search Condition -->
+        <trim prefix="where" prefixOverrides="and |or">
+            <if test="id != null">and id = #{id}</if>
+            <if test="staffId != null">and staff_id = #{staffId}</if>
+            <if test="ssNo != null">and ss_no = #{ssNo}</if>
+            <if test="payMonth != null">and pay_month = #{payMonth}</if>
+            <if test="stopMonth != null">and stop_month = #{stopMonth}</if>
+            <if test="remark != null">and remark = #{remark}</if>
+            <if test="optId != null">and opt_id = #{optId}</if>
+            <if test="addTime != null">and add_time = #{addTime}</if>
+            <if test="updateTime != null">and update_time = #{updateTime}</if>
+            <if test="mark != null">and mark = #{mark}</if>
+        </trim>
+    </sql>
+    <sql id="insertFields"><!-- Fields to insert -->
+        <trim suffixOverrides=",">
+            <if test="id != null">id,</if>
+            <if test="staffId != null">staff_id,</if>
+            <if test="ssNo != null">ss_no,</if>
+            <if test="payMonth != null">pay_month,</if>
+            <if test="stopMonth != null">stop_month,</if>
+            <if test="remark != null">remark,</if>
+            <if test="optId != null">opt_id,</if>
+            <if test="addTime != null">add_time,</if>
+            <if test="updateTime != null">update_time,</if>
+            <if test="mark != null">mark,</if>
+        </trim>
+    </sql>
+
+    <sql id="insertValues"><!-- Values to insert -->
+        <trim suffixOverrides=",">
+            <if test="id != null">#{id},</if>
+            <if test="staffId != null">#{staffId},</if>
+            <if test="ssNo != null">#{ssNo},</if>
+            <if test="payMonth != null">#{payMonth},</if>
+            <if test="stopMonth != null">#{stopMonth},</if>
+            <if test="remark != null">#{remark},</if>
+            <if test="optId != null">#{optId},</if>
+            <if test="addTime != null">#{addTime},</if>
+            <if test="updateTime != null">#{updateTime},</if>
+            <if test="mark != null">#{mark},</if>
+        </trim>
+    </sql>
+
+    <!-- 新增 -->
+    <insert id="insertInto" parameterType="Object">
+        insert into oa_social_security(<include refid="insertFields"/>)
+        values(<include refid="insertValues"/>)
+    </insert>
+
+    <!-- 修改数据 -->
+    <update id="updateInto" parameterType="Object">
+        update oa_social_security set
+        <include refid="sets"/>
+        where id = #{id}
+    </update>
+
+    <!-- 删除数据 -->
+    <update id="deleteById" parameterType="Integer">
+        update oa_social_security set mark = -1 where id = #{id}
+    </update>
+
+    <select id="selectEntity" parameterType="Object" resultType="com.naokang.oa.dao.biz.socialsecurity.entity.SocialSecurityEntity">
+        select
+        <include refid="fields"/>
+        from oa_social_security
+        <include refid="conditions"/>
+    </select>
+
+    <!-- 获取List<T>对象 -->
+    <select id="selectEntities" parameterType="Object" resultType="com.naokang.oa.dao.biz.socialsecurity.entity.SocialSecurityEntity">
+        select
+        <include refid="fields"/>
+        from oa_social_security
+        <include refid="conditions"/>
+    </select>
+
+    <!-- 获取记录Count数量 -->
+    <select id="selectPageCount" parameterType="Map" resultType="Integer">
+        select count(id) from oa_social_security
+        <include refid="conditions"/>
+    </select>
+
+    <!-- 获取List<T>分页对象 -->
+    <select id="selectPageEntities" parameterType="Map" resultType="com.naokang.oa.dao.biz.socialsecurity.entity.SocialSecurityEntity">
+        select * from oa_social_security
+        <include refid="conditions"/>
+        <if test="pageBegin != null and pageSize != null">
+            limit #{pageBegin},#{pageSize}
+        </if>
+    </select>
+</mapper>

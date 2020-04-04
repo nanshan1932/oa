@@ -85,6 +85,13 @@ public class StaffServiceImpl extends BaseServiceImpl<StaffEntity> implements IS
 
     @Override
     public void addStaff(StaffSaveDto dto) {
+        //校验是否已存在
+        StaffEntity entityInfo = new StaffEntity();
+        entityInfo.setIdNumber(dto.getIdNumber());
+        StaffEntity staff = staffMapper.selectEntity(entityInfo);
+        if(staff != null){
+            throw new BusinessException(String.format("身份证号为%s的员工已存在！",  dto.getIdNumber()));
+        }
         StaffEntity entity = new StaffEntity();
         BeanUtilsExt.copy(dto, entity);
         staffMapper.insertInto(entity);

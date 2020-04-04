@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.naokang.oa.dao.biz.socialsecurity.mapper.SocialSecurityDetailMapper">
+    <sql id="conditions"><!-- Search Condition -->
+        <trim prefix="where" prefixOverrides="and |or">
+            <if test="id != null">and id = #{id}</if>
+            <if test="staffId != null">and staff_id = #{staffId}</if>
+            <if test="ssNo != null">and ss_no = #{ssNo}</if>
+            <if test="payMonth != null">and pay_month = #{payMonth}</if>
+            <if test="stopMonth != null">and stop_month = #{stopMonth}</if>
+            <if test="remark != null">and remark = #{remark}</if>
+            <if test="optId != null">and opt_id = #{optId}</if>
+            <if test="addTime != null">and add_time = #{addTime}</if>
+            <if test="updateTime != null">and update_time = #{updateTime}</if>
+            <if test="mark != null">and mark = #{mark}</if>
+        </trim>
+    </sql>
+
+    <!-- 获取记录Count数量 -->
+    <select id="selectPageCount" parameterType="Map" resultType="Integer">
+        select count(id) from oa_staff
+        <include refid="conditions"/>
+    </select>
+
+    <!-- 获取List<T>分页对象 -->
+    <select id="selectPageEntities" parameterType="Map" resultType="com.naokang.oa.dao.biz.socialsecurity.entity.SocialSecurityDetailEntity">
+        SELECT
+        a. NAME,
+        a.sex,
+        (select d.name from oa_dictionary d where d.type = 1001 and d.code = a.sex) as sex_txt,
+        a.id_number,
+        a.dept_id,
+        (select d.dept_name from oa_department d where d.id = a.dept_id) as department,
+        a.job_flag,
+        case a.job_flag WHEN 0 THEN '否' WHEN -1 THEN '是' ELSE '' END job_flag_txt,
+        a.ss_flag,
+        (select d.name from oa_dictionary d where d.type = 1000 and d.code = a.ss_flag) as ss_flag_txt,
+        b.*
+        FROM oa_staff a
+        LEFT JOIN oa_social_security b ON a.id = b.staff_id
+        <include refid="conditions"/>
+        <if test="pageBegin != null and pageSize != null">
+            limit #{pageBegin},#{pageSize}
+        </if>
+    </select>
+</mapper>
